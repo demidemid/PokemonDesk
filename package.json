@@ -1,0 +1,32 @@
+{
+  "name": "pokemon-desk",
+  "version": "1.0.0",
+  "description": "Tutorial",
+  "scripts": {
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server"
+  },
+  "repository": "https://github.com/demidemid/PokemonDesk.git",
+  "author": "demidemid <iamdemid@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
+    "global": "^4.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "css-loader": "^5.0.0",
+    "html-webpack-plugin": "^4.5.0",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.3",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
