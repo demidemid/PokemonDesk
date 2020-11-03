@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 25px 15px;
+  box-sizing: border-box;
+}
+
+.tagline {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  order: 2;
+}
+
+.teamLink {
+  font-size: 16px;
+  color: inherit;
+  text-decoration: none;
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 30px 25px;
+  }
+
+  .tagline {
+    margin-bottom: 0;
+    order: 1;
+  }
+
+  .teamLink {
+    order: 2;
+  }
+}
+
+@media (min-width: 1366px) {
+  .footer {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

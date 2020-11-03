@@ -1,0 +1,249 @@
+// local variables
+$header-mobile-height: 56px;
+//
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: $header-mobile-height;
+  background-color: #f5db13;
+  padding: 0 25px;
+  box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
+  box-sizing: border-box;
+}
+
+.logo {
+  box-sizing: border-box;
+  z-index: 1;
+  svg {
+    height: 22px;
+    width: 58px;
+    box-sizing: border-box;
+  }
+  &.show {
+    position: absolute;
+    transform: translateX(-50%);
+    top: 37px;
+    left: 50%;
+    svg {
+      height: 50px;
+      width: 138px;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.menu {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+}
+
+.menuList {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  top: $header-mobile-height;
+  left: 0;
+  background-color: #f5db13;
+  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  padding: 15px 25px 45px;
+  box-shadow: 0px 11px 10px rgba(1, 17, 38, 0.2);
+  border-radius: 0px 0px 16px 16px;
+  box-sizing: border-box;
+  &.show {
+    display: flex;
+    padding: 65px 25px 45px;
+  }
+}
+
+.menuItem {
+  display: flex;
+  font-size: 27px;
+  text-align: center;
+  color: #000000;
+  text-shadow: 4px 4px 20px rgba(1, 28, 64, 0.2);
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .active {
+    z-index: 1;
+  }
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menuButton {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 24px;
+  width: 30px;
+  font-size: 0;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  box-sizing: border-box;
+  &.show {
+    .buttonIcon {
+      background-color: transparent;
+      &::after,
+      &::before {
+        top: 50%;
+        left: 50%;
+        width: 120%;
+      }
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.buttonIcon {
+  width: 100%;
+  height: 6px;
+  border-radius: 2px;
+  background-color: #212121;
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #212121;
+    left: 0;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 94px;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .menuList {
+    display: flex;
+    position: static;
+    height: 44px;
+    flex-direction: row;
+    background: none;
+    box-shadow: none;
+    border-radius: none;
+    padding: 0;
+    &.show {
+      padding: 0;
+    }
+  }
+
+  .menuItem {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: 0 8px;
+    margin: 0 35px 0 0;
+    font-size: 19px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: #212121;
+      }
+    }
+  }
+
+  .logo {
+    &.show {
+      position: static;
+      transform: none;
+      svg {
+        width: 120px;
+        height: 45px;
+      }
+    }
+    svg {
+      width: 120px;
+      height: 45px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    svg,
+    &.show svg {
+      height: 63px;
+      width: 158px;
+    }
+  }
+  .menuList {
+    padding: 0 25px 0 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header {
+    padding: 0 30px;
+  }
+  .menuItem {
+    margin: 0 60px 0 0;
+    font-size: 25px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (min-width: 1366px) {
+  .content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
