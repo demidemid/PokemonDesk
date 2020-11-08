@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 25px;
+}
+
+
+
+
+
+
+
+@media (min-width: 1280px) {
+  .main {
+    flex-direction: row;
+    padding: 128px calc((100vw - 1200px) / 2) 25px;
+    align-items: flex-start;
+  }
+  
+ 
+}

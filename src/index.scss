@@ -1,24 +1,18 @@
+@import 'styles/font.scss';
+//
 .app-root {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   min-height: 100vh;
-  justify-content: space-between;
 }
 
-main {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 25px;
-  box-sizing: border-box;
-}
 
 body {
   min-width: 320px;
   font-size: 14px;
-  font-family: 'Source Sans Pro', 'Roboto', Arial, sans-serif;
+  font-family: 'Karla', 'Roboto', Arial, sans-serif;
   margin: 0;
   color: #212121;
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);

@@ -1,0 +1,167 @@
+.root {
+  position: relative;
+  width: 100%;
+  min-height: 290px;
+}
+
+.smallPokeBall {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  img {
+    width: 71px;
+    height: 71px;
+  }
+}
+
+.cloud {
+  position: absolute;
+  left: -1%;
+  bottom: 37.22%;
+  img {
+    width: 95px;
+    height: 45px;
+  }
+}
+
+.cloudBig {
+  position: absolute;
+  left: 43%;
+  top: 3%;
+  img {
+    width: 145px;
+    height: 70px;
+  }
+}
+
+.pokeBall {
+  position: absolute;
+  top: -2.86%;
+  right: -5.7%;
+  img {
+    width: 141px;
+    height: 141px;
+  }
+}
+
+.pikachu {
+  position: absolute;
+  top: 3%;
+  left: -5.89%;
+  img {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (min-width: 768px) {
+  .root {
+    min-height: 500px;
+  }
+
+  .smallPokeBall {
+    left: 7.2%;
+    top: 6.8%;
+    img {
+      height: 141px;
+      width: 141px;
+    }
+  }
+
+  .cloud {
+    position: absolute;
+    left: 2.9%;
+    bottom: 26.4%;
+    img {
+      width: 186px;
+      height: 92px;
+    }
+  }
+
+  .cloudBig {
+    position: absolute;
+    left: 41%;
+    top: 3%;
+    img {
+      width: 278px;
+      height: 136px;
+    }
+  }
+
+  .pokeBall {
+    position: absolute;
+    top: -3%;
+    right: -0.7%;
+    img {
+      width: 285px;
+      height: 285px;
+    }
+  }
+
+  .pikachu {
+    position: absolute;
+    top: 4.6%;
+    left: 35.5%;
+    margin-left: -257px;
+    img {
+      width: 514px;
+      height: 514px;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .root {
+    min-height: 680px;
+  }
+
+  .smallPokeBall {
+    position: absolute;
+    top: 2.5%;
+    left: 0.4%;
+    img {
+      width: 171px;
+      height: 171px;
+    }
+  }
+
+  .cloud {
+    position: absolute;
+    left: -6.3%;
+    bottom: 36%;
+    img {
+      width: 232px;
+      height: 110px;
+    }
+  }
+
+  .cloudBig {
+    position: absolute;
+    left: 51%;
+    top: -1%;
+    img {
+      height: 168px;
+      width: 348px;
+    }
+  }
+
+  .pokeBall {
+    position: absolute;
+    top: -6%;
+    right: -39%;
+    img {
+      width: 350px;
+      height: 350px;
+    }
+  }
+
+  .pikachu {
+    position: absolute;
+    top: 0%;
+    left: 31.11%;
+    img {
+      width: 647px;
+      height: 647px;
+    }
+  }
+}

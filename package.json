@@ -11,6 +11,7 @@
   "author": "demidemid <iamdemid@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/react-router-dom": "^5.1.6",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "global": "^4.4.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
@@ -51,6 +53,7 @@
     "ts-loader": "^8.0.7",
     "typescript": "^4.0.3",
     "typescript-plugin-css-modules": "^2.8.0",
+    "url-loader": "^4.1.1",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
