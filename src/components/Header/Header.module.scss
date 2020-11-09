@@ -92,11 +92,10 @@ $header-mobile-height: 56px;
   .active {
     z-index: 1;
   }
-}
-
-.menuLink {
-  text-decoration: none;
-  color: inherit;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .menuButton {
@@ -197,13 +196,13 @@ $header-mobile-height: 56px;
       background-color: $dark;
       transform: translateX(-50%);
       width: 0%;
-      transition: width ease-in-out .25s;
+      transition: width ease-in-out 0.25s;
     }
     &:hover,
     &.active {
       &::before {
         width: 100%;
-        transition: width ease-in-out .25s;
+        transition: width ease-in-out 0.25s;
       }
     }
   }

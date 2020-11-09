@@ -9,7 +9,6 @@ interface CssExports {
   'menu': string;
   'menuButton': string;
   'menuItem': string;
-  'menuLink': string;
   'menuList': string;
   'show': string;
 }

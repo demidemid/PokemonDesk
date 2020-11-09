@@ -1,8 +1,11 @@
+import { ReactNode } from 'react';
+
 export interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   buttonColor: ButtonColors;
   readonly type: `button` | `reset` | `submit`;
   size: ButtonSizes;
+  children: ReactNode;
 }
 
 // eslint-disable-next-line no-shadow

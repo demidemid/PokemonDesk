@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import s from './Header.module.scss';
 import LogoSvg from '../../images/logo.svg';
@@ -13,22 +14,22 @@ const MENU: IMenu[] = [
   {
     id: 1,
     name: `Home`,
-    link: `#Home`,
+    link: `/`,
   },
   {
     id: 2,
     name: `Pokedex`,
-    link: `#Pokedex`,
+    link: `/pokedex`,
   },
   {
     id: 3,
     name: `Legendarios`,
-    link: `#Legendarios`,
+    link: `/legendarios`,
   },
   {
     id: 4,
     name: `Documentacion`,
-    link: `#Documentacion`,
+    link: `/documentacion`,
   },
 ];
 
@@ -62,9 +63,7 @@ class Header extends React.PureComponent<{}, { isShowen: boolean }> {
             <ul className={cn(s.menuList, isShowCssClass)}>
               {MENU.map(({ id, name, link }) => (
                 <li className={cn(s.menuItem, name === `Home` ? s.active : ``)} key={id}>
-                  <a className={cn(s.menuLink)} href={link}>
-                    {name}
-                  </a>
+                  <Link to={link}>{name}</Link>
                 </li>
               ))}
             </ul>

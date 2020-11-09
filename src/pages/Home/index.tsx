@@ -7,7 +7,7 @@ import s from './Home.module.scss';
 
 const HomePage = () => {
   return (
-    <>
+    <div className={s.homePage}>
       <div className={s.parallaxWrapper}>
         <Parallax />
       </div>
@@ -18,13 +18,13 @@ const HomePage = () => {
         <p className={s.text}>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
         <Button
           onClick={() => console.log(`click button!`)}
-          buttonColor={ButtonColors.YELLOW}
-          size={ButtonSizes.AUTO}
+          buttonColor={ButtonColors.GREEN}
+          size={ButtonSizes.BIG}
           type="reset">
           See pokemons
         </Button>
       </section>
-    </>
+    </div>
   );
 };
 
