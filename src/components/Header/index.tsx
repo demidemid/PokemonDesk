@@ -1,77 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import cn from 'classnames';
+import { A, usePath } from 'hookrouter';
 import s from './Header.module.scss';
 import LogoSvg from '../../images/logo.svg';
+import { GENERAL_MENU } from '../../routes';
 
-interface IMenu {
-  id: number;
-  name: string;
-  link: string;
-}
+const Header: React.FC = () => {
+  const [isShowen, setIsShowen] = useState(false);
+  const isShowCssClass: string = isShowen ? s.show : ``;
 
-const MENU: IMenu[] = [
-  {
-    id: 1,
-    name: `Home`,
-    link: `/`,
-  },
-  {
-    id: 2,
-    name: `Pokedex`,
-    link: `/pokedex`,
-  },
-  {
-    id: 3,
-    name: `Legendarios`,
-    link: `/legendarios`,
-  },
-  {
-    id: 4,
-    name: `Documentacion`,
-    link: `/documentacion`,
-  },
-];
-
-class Header extends React.PureComponent<{}, { isShowen: boolean }> {
-  constructor(props: any) {
-    super(props);
-    this.state = { isShowen: false };
-  }
-
-  handleToggle = () => {
-    const { isShowen } = this.state;
-    this.setState(() => {
-      return { isShowen: !isShowen };
-    });
-  };
-
-  render() {
-    const { isShowen } = this.state;
-    const isShowCssClass: string = isShowen ? s.show : ``;
-
-    return (
-      <header className={cn(s.header, isShowCssClass)}>
-        <div className={cn(s.content)}>
-          <div className={cn(s.logo, isShowCssClass)}>
-            <LogoSvg />
-          </div>
-          <nav className={s.menu}>
-            <button className={cn(s.menuButton, isShowCssClass)} onClick={this.handleToggle} type="button">
-              <span className={s.buttonIcon}>Открыть меню</span>
-            </button>
-            <ul className={cn(s.menuList, isShowCssClass)}>
-              {MENU.map(({ id, name, link }) => (
-                <li className={cn(s.menuItem, name === `Home` ? s.active : ``)} key={id}>
-                  <Link to={link}>{name}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+  const path = usePath();
+  return (
+    <header className={cn(s.header, isShowCssClass)}>
+      <div className={cn(s.content)}>
+        <div className={cn(s.logo, isShowCssClass)}>
+          <LogoSvg />
         </div>
-      </header>
-    );
-  }
-}
+
+        <nav className={s.menu}>
+          <button
+            className={cn(s.menuButton, isShowCssClass)}
+            onClick={() => {
+              setIsShowen(!isShowen);
+            }}
+            type="button">
+            <span className={s.buttonIcon}>Открыть меню</span>
+          </button>
+
+          <ul className={cn(s.menuList, isShowCssClass)}>
+            {GENERAL_MENU.map(({ title, link }) => (
+              <li className={s.menuItem} key={title}>
+                <A href={link} className={cn({ [s.active]: link === path })}>
+                  {title}
+                </A>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

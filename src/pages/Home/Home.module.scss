@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  padding: 25px;
 }
 
 .parallaxWrapper {
@@ -46,6 +47,7 @@
 @media (min-width: 1280px) {
   .homePage {
     flex-direction: row;
+    padding: 128px calc((100vw - 1200px) / 2) 25px;
     align-items: flex-start;
   }
   .parallaxWrapper {

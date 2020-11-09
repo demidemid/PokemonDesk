@@ -89,12 +89,10 @@ $header-mobile-height: 56px;
   &:last-child {
     margin-bottom: 0;
   }
-  .active {
-    z-index: 1;
-  }
   a {
     text-decoration: none;
     color: inherit;
+    z-index: 1;
   }
 }
 
@@ -177,32 +175,37 @@ $header-mobile-height: 56px;
 
   .menuItem {
     display: flex;
-    position: relative;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
-    padding: 0 8px;
     margin: 0 35px 0 0;
     font-size: 19px;
     &:last-child {
       margin-right: 0;
     }
-    &::before {
-      position: absolute;
-      content: '';
-      height: 3px;
-      bottom: 0;
-      left: 50%;
-      background-color: $dark;
-      transform: translateX(-50%);
-      width: 0%;
-      transition: width ease-in-out 0.25s;
-    }
-    &:hover,
-    &.active {
+    a {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 100%;
+      padding: 0 8px;
       &::before {
-        width: 100%;
+        position: absolute;
+        content: '';
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        background-color: $dark;
+        transform: translateX(-50%);
+        width: 0%;
         transition: width ease-in-out 0.25s;
+      }
+      &:hover,
+      &.active {
+        &::before {
+          width: 100%;
+          transition: width ease-in-out 0.25s;
+        }
       }
     }
   }
