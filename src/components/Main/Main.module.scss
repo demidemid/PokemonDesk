@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  width: 100%;
+  padding: 25px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1280px) {
+  .main {
+    padding: 128px calc((100vw - 1200px) / 2) 25px;
+  }
+}

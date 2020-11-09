@@ -1,7 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import s from './Header.module.scss';
 import LogoSvg from '../../images/logo.svg';
+
+interface IMenu {
+  id: number;
+  name: string;
+  link: string;
+}
+
+const MENU: IMenu[] = [
+  {
+    id: 1,
+    name: `Home`,
+    link: `/`,
+  },
+  {
+    id: 2,
+    name: `Pokedex`,
+    link: `/pokedex`,
+  },
+  {
+    id: 3,
+    name: `Legendarios`,
+    link: `/legendarios`,
+  },
+  {
+    id: 4,
+    name: `Documentacion`,
+    link: `/documentacion`,
+  },
+];
 
 class Header extends React.PureComponent<{}, { isShowen: boolean }> {
   constructor(props: any) {
@@ -18,7 +48,7 @@ class Header extends React.PureComponent<{}, { isShowen: boolean }> {
 
   render() {
     const { isShowen } = this.state;
-    const isShowCssClass = isShowen ? s.show : ``;
+    const isShowCssClass: string = isShowen ? s.show : ``;
 
     return (
       <header className={cn(s.header, isShowCssClass)}>
@@ -31,26 +61,11 @@ class Header extends React.PureComponent<{}, { isShowen: boolean }> {
               <span className={s.buttonIcon}>Открыть меню</span>
             </button>
             <ul className={cn(s.menuList, isShowCssClass)}>
-              <li className={cn(s.menuItem, s.active)}>
-                <a className={s.menuLink} href="#Home">
-                  Home
-                </a>
-              </li>
-              <li className={cn(s.menuItem)}>
-                <a className={s.menuLink} href="#Pokedex">
-                  Pokedex
-                </a>
-              </li>
-              <li className={cn(s.menuItem)}>
-                <a className={s.menuLink} href="#Legendarios">
-                  Legendarios
-                </a>
-              </li>
-              <li className={cn(s.menuItem)}>
-                <a className={s.menuLink} href="#Documentacion">
-                  Documentacion
-                </a>
-              </li>
+              {MENU.map(({ id, name, link }) => (
+                <li className={cn(s.menuItem, name === `Home` ? s.active : ``)} key={id}>
+                  <Link to={link}>{name}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>

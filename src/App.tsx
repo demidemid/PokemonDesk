@@ -1,16 +1,23 @@
 import React from 'react';
-import cn from 'classnames';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import s from './App.module.scss';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Main from './components/Main';
+import HomePage from './pages/Home';
+import Pokedex from './pages/Pokedex';
 
 const App = () => (
-  <>
+  <BrowserRouter>
     <Header />
-    <main className={cn(s.header, 'color')}>This is future main content!</main>
+    <Main>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/pokedex" component={Pokedex} />
+      </Switch>
+    </Main>
     <Footer />
-  </>
+  </BrowserRouter>
 );
 
 export default App;

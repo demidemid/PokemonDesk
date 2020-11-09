@@ -1,0 +1,69 @@
+.homePage {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.parallaxWrapper {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 4px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  strong {
+    font-weight: 700;
+  }
+}
+
+.text {
+  font-size: 24px;
+  margin: 0 0 42px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 72px;
+  }
+
+  .text {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .homePage {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .parallaxWrapper {
+    order: 2;
+  }
+
+  .content {
+    text-align: left;
+    align-items: flex-start;
+    order: 1;
+  }
+
+  .title {
+    margin-bottom: 45px;
+  }
+
+  .text {
+    font-size: 32px;
+    margin: 0 0 60px;
+  }
+}

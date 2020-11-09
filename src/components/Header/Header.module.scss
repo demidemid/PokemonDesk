@@ -1,3 +1,4 @@
+@import '../../styles/variables';
 // local variables
 $header-mobile-height: 56px;
 //
@@ -7,11 +8,13 @@ $header-mobile-height: 56px;
   left: 0;
   right: 0;
   width: 100vw;
+  width: 100%;
   height: $header-mobile-height;
-  background-color: #f5db13;
+  background-color: $third;
   padding: 0 25px;
   box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
   box-sizing: border-box;
+  z-index: 200;
 }
 
 .logo {
@@ -63,8 +66,8 @@ $header-mobile-height: 56px;
   list-style-type: none;
   top: $header-mobile-height;
   left: 0;
-  background-color: #f5db13;
-  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  background-color: $third;
+  background: linear-gradient(180deg, $third 0%, $primary 100%);
   padding: 15px 25px 45px;
   box-shadow: 0px 11px 10px rgba(1, 17, 38, 0.2);
   border-radius: 0px 0px 16px 16px;
@@ -79,7 +82,7 @@ $header-mobile-height: 56px;
   display: flex;
   font-size: 27px;
   text-align: center;
-  color: #000000;
+  color: $dark;
   text-shadow: 4px 4px 20px rgba(1, 28, 64, 0.2);
   margin-bottom: 16px;
   box-sizing: border-box;
@@ -89,11 +92,10 @@ $header-mobile-height: 56px;
   .active {
     z-index: 1;
   }
-}
-
-.menuLink {
-  text-decoration: none;
-  color: inherit;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .menuButton {
@@ -130,7 +132,7 @@ $header-mobile-height: 56px;
   width: 100%;
   height: 6px;
   border-radius: 2px;
-  background-color: #212121;
+  background-color: $dark;
   box-sizing: border-box;
   &::after,
   &::before {
@@ -139,7 +141,7 @@ $header-mobile-height: 56px;
     width: 100%;
     height: 6px;
     border-radius: 2px;
-    background-color: #212121;
+    background-color: $dark;
     left: 0;
   }
   &::before {
@@ -185,15 +187,22 @@ $header-mobile-height: 56px;
     &:last-child {
       margin-right: 0;
     }
+    &::before {
+      position: absolute;
+      content: '';
+      height: 3px;
+      bottom: 0;
+      left: 50%;
+      background-color: $dark;
+      transform: translateX(-50%);
+      width: 0%;
+      transition: width ease-in-out 0.25s;
+    }
+    &:hover,
     &.active {
       &::before {
-        position: absolute;
-        content: '';
         width: 100%;
-        height: 3px;
-        bottom: 0;
-        left: 0;
-        background-color: #212121;
+        transition: width ease-in-out 0.25s;
       }
     }
   }
