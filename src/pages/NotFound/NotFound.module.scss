@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+//
+.root {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $danger;
+  z-index: 300;
+  box-sizing: border-box;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 240px;
+}
+
+.numbers {
+  position: relative;
+  z-index: inherit;
+  margin-bottom: 25px;
+}
+
+.teamRocket {
+  position: absolute;
+  margin: 0 auto;
+  z-index: inherit;
+}
+
+.errorText {
+  font-size: 25px;
+  margin: 0 0 25px;
+}
+
+.errorTextColor {
+  display: block;
+  color: $white;
+}
