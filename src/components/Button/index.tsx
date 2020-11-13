@@ -36,7 +36,6 @@ const SIZES: ICssClassName[] = [
 ];
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, buttonColor, type = `button`, size }) => {
-  
   const checkCssClass: (array: ICssClassName[], inputType: any) => ClassValue = (
     array: ICssClassName[],
     inputType: any,
@@ -57,4 +56,4 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, buttonColor, type = 
   );
 };
 
-export default Button;
+export default React.memo(Button);

@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const isShowCssClass: string = isShowen ? s.show : ``;
 
   const path = usePath();
+
   return (
     <header className={cn(s.header, isShowCssClass)}>
       <div className={cn(s.content)}>
@@ -42,4 +43,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

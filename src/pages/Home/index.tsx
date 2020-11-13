@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
+import { navigate } from 'hookrouter';
 import React from 'react';
 import Button from '../../components/Button';
 import { ButtonColors, ButtonSizes } from '../../components/Button/Button.entities';
 import Parallax from '../../components/Parallax';
+import { LinkRoutes } from '../../routes';
 import s from './Home.module.scss';
 
 const HomePage = () => {
@@ -17,7 +19,7 @@ const HomePage = () => {
         </h2>
         <p className={s.text}>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
         <Button
-          onClick={() => console.log(`click button!`)}
+          onClick={() => navigate(LinkRoutes.POKEDEX)}
           buttonColor={ButtonColors.GREEN}
           size={ButtonSizes.BIG}
           type="reset">

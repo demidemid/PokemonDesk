@@ -11,9 +11,15 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <Main>{match || <NotFoundPage />}</Main>
-      <Footer />
+      {match ? (
+        <>
+          <Header />
+          <Main>{match}</Main>
+          <Footer />
+        </>
+      ) : (
+        <NotFoundPage />
+      )}
     </>
   );
 };
