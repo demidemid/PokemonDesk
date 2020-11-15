@@ -9,25 +9,33 @@ interface IMenuItem {
   component: () => JSX.Element;
 }
 
+// eslint-disable-next-line no-shadow
+export enum LinkRoutes {
+  HOME = `/`,
+  POKEDEX = `/pokedex`,
+  LEGENDARIOS = `/legendarios`,
+  DOCUMENTACION = `/documentacion`,
+}
+
 export const GENERAL_MENU: IMenuItem[] = [
   {
     title: `Home`,
-    link: `/`,
+    link: LinkRoutes.HOME,
     component: () => <HomePage />,
   },
   {
     title: `Pokedex`,
-    link: `/pokedex`,
+    link: LinkRoutes.POKEDEX,
     component: () => <Pokedex />,
   },
   {
     title: `Legendarios`,
-    link: `/legendarios`,
+    link: LinkRoutes.LEGENDARIOS,
     component: () => <NotFoundPage />,
   },
   {
     title: `Documentacion`,
-    link: `/documentacion`,
+    link: LinkRoutes.DOCUMENTACION,
     component: () => <NotFoundPage />,
   },
 ];
