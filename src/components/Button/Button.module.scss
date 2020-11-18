@@ -38,8 +38,10 @@
   }
 
   &.small {
-    max-width: 140px;
-    height: 40px;
+    min-width: 80px;
+    width: auto;
+    font-size: 13px;
+    height: 20px;
   }
   &.medium {
     max-width: 231px;

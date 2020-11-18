@@ -1,7 +1,7 @@
 import React from 'react';
 import HomePage from './pages/Home';
 import NotFoundPage from './pages/NotFound';
-import Pokedex from './pages/Pokedex';
+import PokedexPage from './pages/Pokedex';
 
 interface IMenuItem {
   title: string;
@@ -26,7 +26,7 @@ export const GENERAL_MENU: IMenuItem[] = [
   {
     title: `Pokedex`,
     link: LinkRoutes.POKEDEX,
-    component: () => <Pokedex />,
+    component: () => <PokedexPage />,
   },
   {
     title: `Legendarios`,

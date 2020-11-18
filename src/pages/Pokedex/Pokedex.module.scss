@@ -29,6 +29,12 @@
   list-style-type: none;
 }
 
+.filterWrapper {
+  padding: 0 10px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
 @media (min-width: 768px) {
   .cardBlock {
     grid-template-columns: repeat(auto-fit, minmax(351px, 1fr));

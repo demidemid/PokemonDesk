@@ -1,68 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+// import Filter from '../../components/Filter';
 import Heading from '../../components/Heading';
 import Loader from '../../components/Loader';
 import PokemonCard from '../../components/PokemonCard';
+import { IPokemonCard } from '../../components/PokemonCard/PokemonCard.entities';
+import useData from '../../hooks/getData';
 import s from './Pokedex.module.scss';
 
-const usePokemons = () => {
-  // Не могу сказать, что способо на Хуках тут получился более
-  // лаконичный, чем на async/await
-  // может как то можно это упростить?
-  const [data, setData] = useState({
-    count: null,
-    limit: null,
-    offset: null,
-    pokemons: [
-      {
-        id: null,
-        name: ``,
-        types: [``],
-        img: ``,
-        stats: {
-          hp: 1,
-          attack: 1,
-          defense: 1,
-          'special-attack': 1,
-          'special-defense': 1,
-          speed: 1,
-        },
-      },
-    ],
-    total: null,
-  });
+const PokedexPage = () => {
+  const [searchValue, setSearchValue] = useState(``);
+  const [query, setQuery] = useState({});
+  const { data, isLoading, isError } = useData(`getPokemons`, query, [searchValue]);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`http://zar.hosthot.ru/api/v1/pokemons`);
-        const result = await response.json();
-
-        setData(result);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getPokemons();
-  }, []);
-
-  return {
-    data,
-    isLoading,
-    isError,
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    setQuery((search) => ({
+      ...search,
+      name: e.target.value,
+    }));
   };
-};
 
-const Pokedex = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const isHasQueryParams: boolean = Object.keys(query).length > 0;
 
-  if (isLoading) {
+  if (isLoading && !isHasQueryParams) {
     return <Loader>Loading...</Loader>;
   }
 
@@ -70,20 +30,32 @@ const Pokedex = () => {
     return <div>Something went wrong!</div>;
   }
 
+  // <Filter />
   return (
     <section className={s.root}>
       <Heading level={4}>
-        {data?.total} <strong className={s.strongWord}>Pokemons</strong> for you to choose your favorite
+        {data?.total || 0} <strong className={s.strongWord}>Pokemons</strong> for you to choose your favorite
       </Heading>
+      <div className={s.filterWrapper}>
+        <input type="text" value={searchValue} onChange={handleSearchChange} />
+      </div>
       <ul className={s.cardBlock}>
-        {data?.pokemons.map(({ id, name, types, img, stats }) => (
-          <li key={id} className={s.cardWrapper}>
-            <PokemonCard name={name} types={types} img={img} stats={stats} />
-          </li>
-        ))}
+        {isLoading && isHasQueryParams ? (
+          <Loader>Loading...2</Loader>
+        ) : (
+          data?.pokemons.map((pokemonCard: IPokemonCard) => {
+            const { id, name, types, img, stats } = pokemonCard;
+
+            return (
+              <li key={id} className={s.cardWrapper}>
+                <PokemonCard name={name} types={types} img={img} stats={stats} />
+              </li>
+            );
+          })
+        )}
       </ul>
     </section>
   );
 };
 
-export default Pokedex;
+export default PokedexPage;
