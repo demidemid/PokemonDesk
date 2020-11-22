@@ -10,17 +10,17 @@ export interface IPokemonStat {
 
 export interface IPokemonCard {
   id: number;
-  name_clean: string;
-  abilities: string[];
-  stats: IPokemonStat;
+  name: string;
   types: string[];
   img: string;
-  name: string;
-  base_experience: number;
-  height: number;
-  is_default: boolean;
-  order: 1;
-  weight: 69;
+  stats: IPokemonStat;
+  name_clean?: string;
+  abilities?: string[];
+  base_experience?: number;
+  height?: number;
+  is_default?: boolean;
+  order?: 1;
+  weight?: 69;
 }
 
 export interface IColorCodeByType {
