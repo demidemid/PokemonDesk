@@ -14,9 +14,10 @@ function getUrlWithParamsConfig(endpointConfig: string, query: any): IUrlWithPar
     query: {},
   };
 
+  const queryValue = { ...query };
+
   const pathname = Object.keys(query).reduce((acc: any, val: string) => {
     if (acc.indexOf(`{${val}}`) !== -1) {
-      const queryValue = { ...query };
       const result = acc.replace(`{${val}}`, queryValue[val]);
       delete queryValue[val];
       return result;
@@ -27,7 +28,7 @@ function getUrlWithParamsConfig(endpointConfig: string, query: any): IUrlWithPar
 
   url.pathname = pathname;
   url.query = {
-    ...query,
+    ...queryValue,
   };
 
   return url;
