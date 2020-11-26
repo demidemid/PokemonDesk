@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
-// import Filter from '../../components/Filter';
+import Filter from '../../components/Filter';
 import Heading from '../../components/Heading';
 import Loader from '../../components/Loader';
 import PokemonCard from '../../components/PokemonCard';
 import { IPokemonCard } from '../../components/PokemonCard/PokemonCard.entities';
 import useData from '../../hooks/getData';
+import useDebounce from '../../hooks/useDebounce';
+import { IPokemons } from '../../interface/pokemons';
 import s from './Pokedex.module.scss';
+
+interface IQuery {
+  name?: string;
+}
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState(``);
-  const [query, setQuery] = useState({});
-  const { data, isLoading, isError } = useData(`getPokemons`, query, [searchValue]);
+  const [query, setQuery] = useState<IQuery>({});
+  const debouncedValue = useDebounce(searchValue, 500);
+  const { data, isLoading, isError } = useData<IPokemons>(`getPokemons`, query, [debouncedValue]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-    setQuery((search) => ({
-      ...search,
-      name: e.target.value,
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    setQuery((stateQuery: IQuery) => ({
+      ...stateQuery,
+      name: value,
     }));
+  };
+
+  const setInputSearchValue = (value: string) => {
+    handleSearchChange(value);
   };
 
   const isHasQueryParams: boolean = Object.keys(query).length > 0;
@@ -30,14 +41,13 @@ const PokedexPage = () => {
     return <div>Something went wrong!</div>;
   }
 
-  // <Filter />
   return (
     <section className={s.root}>
       <Heading level={4}>
-        {data?.total || 0} <strong className={s.strongWord}>Pokemons</strong> for you to choose your favorite
+        {(data && data?.total) || 0} <strong className={s.strongWord}>Pokemons</strong> for you to choose your favorite
       </Heading>
       <div className={s.filterWrapper}>
-        <input type="text" value={searchValue} onChange={handleSearchChange} />
+        <Filter ssValue={setInputSearchValue} />
       </div>
       <ul className={s.cardBlock}>
         {isLoading && isHasQueryParams ? (

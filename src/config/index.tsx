@@ -1,5 +1,5 @@
 export interface IEndpoint {
-  getPokemons: {
+  [key: string]: {
     method: string;
     url: {
       pathname: string;
@@ -30,6 +30,12 @@ const config: IConfig = {
         method: `GET`,
         url: {
           pathname: `/api/v1/pokemons`,
+        },
+      },
+      getPokemon: {
+        method: `GET`,
+        url: {
+          pathname: `/api/v1/pokemon/{id}`,
         },
       },
     },

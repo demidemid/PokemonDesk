@@ -1,33 +1,18 @@
 import { useEffect, useState } from 'react';
-import { IPokemonCard } from '../components/PokemonCard/PokemonCard.entities';
 import req from '../utils/request';
 
-interface IData {
-  count: number;
-  limit: number;
-  offset: number;
-  pokemons: IPokemonCard[];
-  total: number;
-}
+const useData = <T>(endpoint: string, query: object, deps: any[] = []) => {
+  const [data, setData] = useState<T | null>(null);
 
-interface IUseDate {
-  data: IData | null;
-  isLoading: boolean;
-  isError: boolean;
-}
-
-const useData = (endpoint: string, query: object, deps: any[] = []): IUseDate => {
-  const [data, setData] = useState<IData | null>(null);
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async (): Promise<void> => {
       setIsLoading(true);
 
       try {
-        const result = await req(endpoint, query);
+        const result: any = await req<T>(endpoint, query);
         setData(result);
       } catch (error) {
         setIsError(true);
