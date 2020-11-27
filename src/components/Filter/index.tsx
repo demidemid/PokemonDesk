@@ -33,8 +33,16 @@ const TypeList: ICheckboxTypeList[] = [
   { id: 18, type: `Water`, isChecked: false },
 ];
 
-const Filter = () => {
+interface IFilter {
+  ssValue: (value: string) => void;
+}
+
+const Filter: React.FC<IFilter> = ({ ssValue }) => {
   const [windowSize, setWindowWidth] = useState(0);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    ssValue(e.target.value);
+  };
 
   useEffect(() => {
     const handleWindowWidth = () => {
@@ -51,7 +59,12 @@ const Filter = () => {
 
   return (
     <div className={s.root}>
-      <input type="search" className={s.inputSearch} placeholder="Encuentra tu pokémon..." />
+      <input
+        type="search"
+        className={s.inputSearch}
+        onChange={handleSearchChange}
+        placeholder="Encuentra tu pokémon..."
+      />
       <button type="button" className={s.filterButton}>
         Filter
       </button>
