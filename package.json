@@ -11,11 +11,15 @@
   "author": "demidemid <iamdemid@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@hapi/hapi": "^20.0.3",
+    "@hapi/inert": "^6.0.3",
     "@types/react-router-dom": "^5.1.6",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "global": "^4.4.0",
+    "handlebars": "^4.7.6",
     "hookrouter": "^1.2.3",
+    "path": "^0.12.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -63,7 +67,8 @@
     "typescript-plugin-css-modules": "^2.8.0",
     "url-loader": "^4.1.1",
     "webpack-cli": "3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "husky": {
     "hooks": {

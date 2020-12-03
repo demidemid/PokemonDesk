@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { navigate } from 'hookrouter';
 import React from 'react';
-import Button from '../../components/Button';
-import { ButtonColors, ButtonSizes } from '../../components/Button/Button.entities';
+import Button from '../../components/_common/Button';
+import { ButtonColors, ButtonSizes } from '../../components/_common/Button/Button.entities';
 import Parallax from '../../components/Parallax';
 import { LinkRoutes } from '../../routes';
 import s from './Home.module.scss';
