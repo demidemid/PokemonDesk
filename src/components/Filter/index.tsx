@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import s from './Filter.module.scss';
-import Button from '../Button';
-import { ButtonColors, ButtonSizes } from '../Button/Button.entities';
-import ArrowFilter from './assets/ArrowFilter.png';
+import Button from '../_common/Button';
+import { ButtonColors, ButtonSizes } from '../_common/Button/Button.entities';
+import FilterSelect from '../FilterSelect';
 
 interface ICheckboxTypeList {
   id: number;
@@ -38,24 +38,11 @@ interface IFilter {
 }
 
 const Filter: React.FC<IFilter> = ({ ssValue }) => {
-  const [windowSize, setWindowWidth] = useState(0);
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState<boolean>(false);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     ssValue(e.target.value);
   };
-
-  useEffect(() => {
-    const handleWindowWidth = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowWidth);
-    return () => window.removeEventListener('resize', handleWindowWidth);
-  }, []);
-
-  if (window.innerWidth >= 768 || windowSize) {
-    // alert(`not mobile!`);
-  }
 
   return (
     <div className={s.root}>
@@ -65,15 +52,14 @@ const Filter: React.FC<IFilter> = ({ ssValue }) => {
         onChange={handleSearchChange}
         placeholder="Encuentra tu pokémon..."
       />
-      <button type="button" className={s.filterButton}>
+      <button
+        className={cn(s.toggleButton, !isFilterMenuOpen || s.show)}
+        type="button"
+        onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}>
         Filter
       </button>
-      <div className={s.filterMenu}>
-        <section className={s.filterSection}>
-          <button type="button" className={cn(s.filterButtonTitle, s.type)}>
-            Type
-            <img className={s.arrowFilter} src={ArrowFilter} alt="arrow button" />
-          </button>
+      <div className={cn(s.filterMenu, !isFilterMenuOpen || s.show)}>
+        <FilterSelect title="Type">
           <ul className={cn(s.filterContent, s.checkboxType)}>
             {TypeList.map((checkbox: ICheckboxTypeList) => (
               <li key={checkbox.id} className={s.typeItemBlock}>
@@ -90,12 +76,8 @@ const Filter: React.FC<IFilter> = ({ ssValue }) => {
               </li>
             ))}
           </ul>
-        </section>
-        <section className={cn(s.filterSection, s.experience)}>
-          <button type="button" className={cn(s.filterButtonTitle, s.experience)}>
-            Experience
-            <img className={s.arrowFilter} src={ArrowFilter} alt="arrow button" />
-          </button>
+        </FilterSelect>
+        <FilterSelect title="Experience">
           <ul className={cn(s.filterContent, s.cloud)}>
             <fieldset className={s.innerRow}>
               <label className={s.fromToLabel} htmlFor="from">
@@ -114,12 +96,8 @@ const Filter: React.FC<IFilter> = ({ ssValue }) => {
               </Button>
             </div>
           </ul>
-        </section>
-        <section className={cn(s.filterSection, s.attack)}>
-          <button type="button" className={cn(s.filterButtonTitle, s.attack)}>
-            Attack
-            <img className={s.arrowFilter} src={ArrowFilter} alt="arrow button" />
-          </button>
+        </FilterSelect>
+        <FilterSelect title="Attack">
           <ul className={cn(s.filterContent, s.cloud)}>
             <fieldset className={s.innerRow}>
               <label className={s.fromToLabel} htmlFor="attack-from">
@@ -144,7 +122,7 @@ const Filter: React.FC<IFilter> = ({ ssValue }) => {
               </Button>
             </div>
           </ul>
-        </section>
+        </FilterSelect>
       </div>
     </div>
   );

@@ -1,0 +1,300 @@
+@import '../../styles/variables';
+//
+.root {
+  position: relative;
+  box-sizing: border-box;
+
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 15px 15px;
+  box-sizing: border-box;
+  margin-bottom: -140px;
+  flex-shrink: 0;
+  h3 {
+    color: $white;
+  }
+}
+
+.pokemonImage {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  margin: 0 auto 20px;
+}
+
+.imageFooter {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  transform: translateY(-40px);
+}
+
+.weightWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: $white;
+  &.weightNotMobile {
+    display: none;
+  }
+}
+
+.weigthCircle {
+  width: 41px;
+  height: 41px;
+  background: #f2cb07;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-right: 8px;
+  color: $dark;
+}
+
+.labelBlock {
+  display: flex;
+  margin-left: auto;
+}
+
+.label {
+  background: #f28f16;
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 11px;
+  height: 20px;
+  min-width: 60px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: #212121;
+  padding: 0 12px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.cardContentBlock {
+  height: 100%;
+  padding: 130px 15px 30px;
+  background: linear-gradient(180deg, rgba(33, 33, 33, 0.79) 42.19%, rgb(33 33 33 / 28%) 100%);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.cloud {
+  background: #fdfdfd;
+  box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.cloudWrapper {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px 3px 5px;
+  }
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+    border: 3px solid #212121;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 2;
+  }
+  .name {
+    font-size: 11px;
+    text-align: center;
+    color: #4b4b4b;
+  }
+}
+
+.cloudAbilities {
+  padding: 20px;
+  margin-bottom: 15px;
+  .title {
+    margin: 0 0 9px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 31px;
+  }
+  .abilitiesWrapper {
+    display: flex;
+    margin: 0;
+    .tag {
+      &:last-child {
+        .dot {
+          display: none;
+        }
+      }
+    }
+    .name {
+      font-size: 16px;
+    }
+  }
+}
+
+.cloudExpWrapper {
+  padding: 14px 20px 27px;
+  margin-bottom: 15px;
+}
+
+.cloudExp {
+  margin-bottom: 20px;
+  .name {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 4px;
+  }
+  .value {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 0 12px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contentHeader {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .root {
+    flex-direction: row;
+  }
+
+  .imageBlock {
+    padding: 15px 10px 20px;
+    margin: 0;
+    h3 {
+      display: none;
+    }
+  }
+
+  .pokemonImage {
+    height: 290px;
+    width: 284px;
+    margin: 0 auto;
+  }
+
+  .cardContentBlock {
+    border-radius: 0;
+    height: auto;
+    width: 100%;
+    padding: 25px 15px 20px;
+  }
+
+  .weightWrapper {
+    &.weightMobile {
+      display: none;
+    }
+    &.weightNotMobile {
+      display: flex;
+    }
+  }
+
+  .contentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 27px;
+    h4 {
+      color: $white;
+    }
+  }
+
+  .cloudAbilities {
+    padding: 8px 20px;
+    .title {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  .cloudExpWrapper {
+    padding: 16px;
+    display: flex;
+  }
+
+  .cloudExp {
+    width: calc(50% - 13px);
+    margin: 0 26px 0 0;
+    .name {
+      font-size: 14px;
+      margin: 0;
+    }
+    .value {
+      font-size: 13px;
+      margin: 0 0 2px;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .imageFooter {
+    transform: none;
+  }
+
+  .label {
+    padding: 0 8px 2px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cloudAbilities {
+    padding: 10px 20px;
+    margin-bottom: 22px;
+  }
+  .cloudExpWrapper {
+    padding: 20px 20px;
+    margin-bottom: 22px;
+  }
+  .cloudExp {
+    .name {
+      font-size: 16px;
+    }
+    .value {
+      font-size: 16px;
+    }
+  }
+
+  .cloudWrapper {
+    gap: 23px;
+  }
+
+  .pokemonImage {
+    width: 334px;
+    height: 325px;
+  }
+}

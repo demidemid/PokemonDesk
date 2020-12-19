@@ -1,7 +1,7 @@
 import React from 'react';
-import Heading from '../Heading';
-import { IPokemonStat, IColorCodeByType, colorTypes } from './PokemonCard.entities';
-
+import getColorCode from '../../utils/getColorCode';
+import Heading from '../_common/Heading';
+import { IPokemonStat, colorTypes } from './PokemonCard.entities';
 import s from './PokemonCard.module.scss';
 
 interface IPokemonProps {
@@ -12,19 +12,6 @@ interface IPokemonProps {
 }
 
 const PokemonCard: React.FC<IPokemonProps> = ({ name, types, img, stats }) => {
-  // eslint-disable-next-line no-shadow
-  const getColorCode = (type: string, colorTypes: IColorCodeByType[]): string => {
-    let res: string = ``;
-
-    for (const colorType of colorTypes) {
-      if (colorType.types.includes(type)) {
-        res = colorType.colorCode;
-      }
-    }
-
-    return res;
-  };
-
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>

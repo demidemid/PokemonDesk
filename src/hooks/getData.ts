@@ -12,7 +12,7 @@ const useData = <T>(endpoint: string, query: object, deps: any[] = []) => {
       setIsLoading(true);
 
       try {
-        const result: any = await req<T>(endpoint, query);
+        const result: any = await req(endpoint, query);
         setData(result);
       } catch (error) {
         setIsError(true);

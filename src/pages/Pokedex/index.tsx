@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { A } from 'hookrouter';
 import Filter from '../../components/Filter';
-import Heading from '../../components/Heading';
+import Heading from '../../components/_common/Heading';
 import Loader from '../../components/Loader';
 import PokemonCard from '../../components/PokemonCard';
 import { IPokemonCard } from '../../components/PokemonCard/PokemonCard.entities';
@@ -8,6 +9,7 @@ import useData from '../../hooks/getData';
 import useDebounce from '../../hooks/useDebounce';
 import { IPokemons } from '../../interface/pokemons';
 import s from './Pokedex.module.scss';
+import { LinkRoutes } from '../../routes';
 
 interface IQuery {
   name?: string;
@@ -58,7 +60,9 @@ const PokedexPage = () => {
 
             return (
               <li key={id} className={s.cardWrapper}>
-                <PokemonCard name={name} types={types} img={img} stats={stats} />
+                <A href={`${LinkRoutes.POKEDEX}/${id}`}>
+                  <PokemonCard name={name} types={types} img={img} stats={stats} />
+                </A>
               </li>
             );
           })

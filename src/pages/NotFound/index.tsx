@@ -1,7 +1,7 @@
 import { navigate } from 'hookrouter';
 import React from 'react';
-import Button from '../../components/Button';
-import { ButtonColors, ButtonSizes } from '../../components/Button/Button.entities';
+import Button from '../../components/_common/Button';
+import { ButtonColors, ButtonSizes } from '../../components/_common/Button/Button.entities';
 import { LinkRoutes } from '../../routes';
 import TeamRocketSvg from './assets/teamRocket.svg';
 
